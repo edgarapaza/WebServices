@@ -35,8 +35,8 @@ $json=array();
 		//echo $numero."<br>";
 
 		if($numero > 0){
-			echo "Los datos existen";
-			$resulta["documento"] = 0;
+			//echo "Los datos existen";
+			$resulta["codigoCliente"] = 0;
 			$resulta["nombre"]    = 'Los datos ya existen';
 			$resulta["apellidos"] = 'Los datos ya existen';
 			$json['usuario'][]    = $resulta;
@@ -44,8 +44,8 @@ $json=array();
 			echo json_encode($json);
 		}else{
 			// No existe los datos	
-			echo "El dato NO existe";
-			$sql2 = "INSERT INTO taxiseguro.cliente VALUES (null,'$nombres','$apellidos','$telefono','$email','$dni','$ciudad','$passwd');";
+			//echo "El dato NO existe";
+			$sql2 = "INSERT INTO cliente VALUES (null,'$nombres','$apellidos','$telefono','$email','$dni','$ciudad','$passwd');";
 
 			
 					
@@ -54,8 +54,7 @@ $json=array();
 				echo("Error description: " . $link->error);
   				exit();
 
-  				echo "Aqui";
-				$resulta["documento"] = 0;
+				$resulta["codigoCliente"] = 0;
 				$resulta["nombre"]    = 'No Registra';
 				$resulta["apellidos"] = 'No Registra';
 				$json['usuario'][]    = $resulta;
@@ -63,7 +62,7 @@ $json=array();
 				echo json_encode($json);
 			}else{
 				
-				$consulta  = "SELECT * FROM cliente WHERE dni = '$dni';";
+				$consulta  = "SELECT idcliente, nombres, apellidos FROM cliente WHERE dni =".$dni;
 
 				echo "Consulta: ".$consulta;
 

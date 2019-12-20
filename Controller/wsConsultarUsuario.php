@@ -1,5 +1,5 @@
 <?PHP
-require_once "./Model/Conexion.php";
+require_once "../Model/Conexion.php";
 
 $conn = new Conexion();
 $link = $conn->Conectar();
@@ -23,7 +23,7 @@ $json=array();
 			$json['usuario'][]=$resultar;
 		}
 		
-		mysqli_close($conn);
+		mysqli_close($link);
 		echo json_encode($json);
 	}
 	else{

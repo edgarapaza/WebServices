@@ -17,7 +17,7 @@ class Conexion {
 			exit();
 		}
 
-		echo $mysqli->host_info. "Dentro de la clase";
+		#echo $mysqli->host_info. "Dentro de la clase";
 		return $mysqli;
 	}
 }

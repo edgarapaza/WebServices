@@ -1,33 +1,37 @@
 <?PHP
-require_once "./Model/Conexion.php";
+require_once "../Model/Conexion.php";
 
 $conn = new Conexion();
 $link = $conn->Conectar();
 
 $json=array();
 
-if(isset($_GET["direccion"]) && isset($_GET["referencia"]) && isset($_GET["otros"]) && isset($_GET["tipounidad"]) && isset($_GET['codigo']))
+if(isset($_GET["idcliente"]) && isset($_GET["idauto"]) && isset($_GET["direccion"]) && isset($_GET["direccion"]) && isset($_GET['tipounidad']))
 {
-	$idcliente  = $_GET['codigo'];
+	$idcliente  = $_GET['idcliente'];
+	$idauto     = $_GET['idauto'];
 	$direccion  = $_GET['direccion'];
 	$referencia = $_GET['referencia'];
 	$otro       = $_GET['otros'];
-	$tipouni    = $_GET['tipounidad'];
+	$tipounidad = $_GET['tipounidad'];
 	$fecpedido  = date('Y-m-d h:i:s');
 
 	echo $idcliente ."<br>";
+	echo $idauto    ."<br>";
 	echo $direccion ."<br>";
 	echo $referencia."<br>";
 	echo $otro      ."<br>"; 
-	echo $tipouni 	."<br>";
+	echo $tipounidad."<br>";
 	echo $fecpedido ."<br>";
 	
 			
-	$sql = "INSERT INTO taxiseguro.pedirmovilidad VALUES (NULL,$idcliente,0,'$direccion','$referencia','$otro','$tipouni','$fecpedido',true,'$fecpedido',0);";
+	$sql = "INSERT INTO pedirmovilidad VALUES (NULL,'$idcliente','$idauto','$direccion','$referencia','$otro','$tipounidad','$fecpedido',1,NULL,0,0,null);";
 			
-	if(!$res=$link->query($sql))
+	if(!$link->query($sql))
 	{
-       	
+       	echo("Error description: " . $link->error);
+		exit();
+
 		$resulta["direccion"]     = 'Sin direccion';
 		$resulta["referencia"]    = 'No Registra';
 		$json['pedirMovilidad'][] = $resulta;
@@ -36,7 +40,7 @@ if(isset($_GET["direccion"]) && isset($_GET["referencia"]) && isset($_GET["otros
 
     }else{
 
-    	$consulta  = "SELECT direccion, referencia, tipouni FROM pedirmovilidad WHERE estado = true AND idcliente = " . $idcliente;
+    	$consulta  = "SELECT idpedir, idcliente, direccion, referencia, tipouni, fecPedido FROM pedirmovilidad WHERE estado = true AND idcliente =" . $idcliente;
     	
 		$resultado = $link->query($consulta);
 				
@@ -44,7 +48,7 @@ if(isset($_GET["direccion"]) && isset($_GET["referencia"]) && isset($_GET["otros
 			$json['pedirMovilidad'][]=$registro;
 		}
 				
-		mysqli_close($conn);
+		mysqli_close($link);
 		echo json_encode($json);	
 		
     }
