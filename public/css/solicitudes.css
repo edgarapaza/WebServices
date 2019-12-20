@@ -1,0 +1,71 @@
+* {
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  color: #081F3E;
+  font-family: Roboto, Sans serif;
+  font-size: 18px; }
+
+.mimenu {
+  background-color: #3CBAEC;
+  border-radius: 10px;
+  padding: 5px;
+  color: #333;
+  text-decoration: none; }
+
+.header {
+  background-color: #081F3E;
+  color: white;
+  font-size: 1em;
+  border-radius: 10px 10px 0px 0px;
+  height: 60px;
+  text-align: center; }
+  .header .title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center; }
+  .header .subtitle {
+    font-size: 1.2em; }
+
+.header__title {
+  font-size: 0.8em; }
+
+.table {
+  margin-top: 5px;
+  border-bottom: 1px solid #969BA0;
+  position: relative; }
+  .table td {
+    border-top: 1px solid #969BA0; }
+  .table .caja1 {
+    padding: 10px; }
+  .table .etiqueta {
+    font-size: 0.7em;
+    color: #969BA0;
+    position: absolute;
+    margin-top: -10px; }
+  .table .movilidad {
+    background-color: #3CBAEC;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px; }
+  .table .boton-principal {
+    display: flex;
+    background-color: #081F3E;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    height: 40px;
+    width: 100%; }
+    .table .boton-principal:hover {
+      width: 90%; }
+
+/*# sourceMappingURL=solicitudes.css.map */
