@@ -13,12 +13,12 @@ class ListaPendientes
     }
 
     public function MostrarLista(){
-    	$sql="SELECT idpedir,idcliente,idauto,direccion,referencia,tipouni,estado FROM taxiseguro.pedirmovilidad WHERE aceptado = 0 AND estado <> 0;";
+    	$sql="SELECT idpedir,idcliente,idauto,direccion,referencia,tipouni,estado FROM pedirmovilidad WHERE aceptado = 0 AND estado <> 0;";
     	
     	if(!$res = $this->conn->query($sql)){
-    		echo "Error";
-			//echo $registro['id'].' - '.$registro['nombre'].'<br/>';
-    	}
+    		echo("Error description: " . $this->conn->error);
+            exit();
+        }
 
 		mysqli_close($this->conn);
 

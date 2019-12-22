@@ -26,38 +26,31 @@ $row['idauto']="M13";
 			</span>
 		</div>
 	</div>
+
+	<?php 
+		while ($row = $datos->fetch_array()) {
+	?>
+	<div class="content-pedidos">
+		<div class="pedido_imagen">
+			<div class="movilidad">Mov</div>
+			<span class="etiqueta"><?php echo $row[1]; ?></span>
+		</div>
+		<div class="pedidos_detalles">
+			<span class="etiqueta">Direccion:</span>
+			<p><?php echo $row[3]; ?></p>
+			<span class="etiqueta">Referencia:</span>
+			<p><?php echo $row[4]; ?></p>
+			<span class="etiqueta">Tipo Unidad:</span>
+			<p><?php echo $row[5]; ?></p>
+			<p>
+				<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo 'M14';?>" class="boton-principal">Aceptar servicio</a>
+			</p>
+		</div>
+	</div>
+
+	<?php } ?>
 	
 	
-	<table width="100%" class="table">
-		<tbody>
-			<?php 
-				while ($row = $datos->fetch_array()) {
-			?>
-			<tr>
-				<td width="60px;">
-					<div class="movilidad">Mov</div>
-					<?php echo $row[1]; ?>
-				</td>
-				<td class="caja1">
-					<p>
-						<span class="etiqueta">Direccion:</span>
-						<?php echo $row[3]; ?>
-					</p>
-					<p>
-						<span class="etiqueta">Referencia:</span>
-						<?php echo $row[4]; ?>
-					</p>
-					<p>
-						<span class="etiqueta">Tipo Unidad:</span>
-						<?php echo $row[5]; ?>
-					</p>
-					<p>
-						<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo 'M14';?>" class="boton-principal">Aceptar servicio</a>
-					</p>
-				</td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
+	
 </body>
 </html>

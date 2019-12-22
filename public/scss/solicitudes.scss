@@ -43,50 +43,62 @@ body{
 .header__title{
 	font-size: 0.8em;
 }
+.content-pedidos{
+	display: flex;
+	border-bottom: 1px $color-gris solid;
+	padding: 5px;
 
-.table{
-	td{
-		border-top: 1px solid $color-gris;
-	}
-	.caja1{
-		padding: 10px;
-	}
-	margin-top: 5px;
-	
-	border-bottom: 1px solid $color-gris;
-	position: relative;
-	
-	.etiqueta{
-		font-size: 0.7em;
-		color: $color-gris;
-		position: absolute;
-		margin-top: -10px;
-	}
-
-	.movilidad{
-		background-color: $celeste;
-		border-radius: 50%;
-		color: white;
+	.pedido_imagen{
+		width: 20%;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 50px;
-		height: 50px;
-	}
-
-	.boton-principal{
-		display: flex;
-		background-color: $color-azul;
-		text-decoration: none;
-		color: white;
-		font-weight: bold;
 		justify-content: center;
 		align-items: center;
-		text-transform: uppercase;
-		height: 40px;
-		width: 100%;
-		&:hover{
-			width: 90%;
+	
+		.movilidad{
+			background-color: $celeste;
+			border-radius: 50%;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 50px;
+			height: 50px;
+		}
+
+		.etiqueta{
+			font-size: 0.5em;
+			color: $color-gris;
+		}
+
+	}
+
+	.pedidos_detalles{
+		width: 80%;
+
+		.etiqueta{
+			font-size: 0.5em;
+			color: $color-gris;
+		}
+		p{
+			
+		}
+
+		.boton-principal{
+			display: flex;
+			background-color: $color-azul;
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+			justify-content: center;
+			align-items: center;
+			text-transform: uppercase;
+			height: 40px;
+			width: 100%;
+			&:hover{
+				width: 90%;
+				display: flex;
+				justify-content: center;
+			}
 		}
 	}
 }
