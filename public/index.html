@@ -3,21 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
 	<title>App Conducto</title>
 </head>
 <body>
 	<div class="header">
 		<img src="image/logo2.png" alt="" class="logo">
 	</div>
-	<form action="" class="formulario">
-		<input class="txtCajas" type="text" name="nameuser" placeholder="nombre de usuario"><br/>
-		<input class="txtCajas" type="passwd" name="namepasswd" placeholder="Password"><br/>
-		<br/>
-		<button class="boton1">Ingresar</button>
-		<input type="checkbox" name="recordar"> Recuerdame
+	<div class="union">
+		
+		<div class="cabecera">
+			<h2>Login en System</h2>
+		</div>
+		<form action="../Controller/login.php" class="formulario">
+			
+			<input class="txtCajas" type="text" name="usuario" placeholder="nombre de usuario"><br/>
+			<input class="txtCajas" type="password" name="passwd" placeholder="Password"><br/>
+			<br/>
+			<button class="boton1">Ingresar</button>
 
-		<a href="menu.html">Ingresar sin clave</a>
-	</form>	
+			<input type="checkbox" name="recordar"> Recuerdame
+
+		</form>	
+	</div>
 </body>
 </html>

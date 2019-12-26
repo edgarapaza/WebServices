@@ -79,13 +79,11 @@ $json=array();
   					exit();
   					
 				}
-				
-				
+					
 				echo json_encode($json);
 
 			}
-			
-				
+					
 		}
 		
 	}

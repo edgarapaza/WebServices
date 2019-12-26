@@ -15,6 +15,9 @@ body {
     text-align: center;
     color: white;
     font-style: italic; }
+    .botones .nuevosMensajes .numero {
+      font-size: 1.8em;
+      color: #78FF00; }
   .botones .boton-principal {
     display: flex;
     background-color: #1495F1;

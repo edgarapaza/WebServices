@@ -1,5 +1,15 @@
+<?php 
+require "../Model/Listados.model.php";
+$listas = new Listas();
+$data = $listas->ServiciosAbiertosTodos();
+
+$num = $data->num_rows;
+
+
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,7 +23,7 @@
 			<span>*</span>
 			<p class="subtitle">Lista de solicitudes pendientes</p>
 			<span>
-				<a href="menu.html">MENU</a>
+				<a href="menu.php">MENU</a>
 			</span>
 		</div>
 	</div>
@@ -24,7 +34,7 @@
 	<div class="botones">
 		
 		<div class="nuevosMensajes">
-			Tenemos 13 Nuevos mensajes
+			Tenemos <span class="numero"><?php echo $num; ?></span> nuevas solicitudes de movilidad
 		</div>
 
 		<a href="newSolicitudes.php" class="boton-principal">Nuevas Solicitudes</a>

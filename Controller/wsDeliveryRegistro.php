@@ -13,7 +13,7 @@ if(isset($_GET["idcliente"]) && isset($_GET["direccion"]) && isset($_GET["refere
 	$direccion  = $_GET['direccion'];
 	$referencia = $_GET['referencia'];
 	$otro       = $_GET['otro'];
-	$delivery = $_GET['delivery'];
+	$delivery   = $_GET['delivery'];
 	$fecpedido  = date('Y-m-d h:i:s');
 
 	echo $idcliente ."<br>";

@@ -24,6 +24,19 @@ class ListaPendientes
 
 		return $res;
 	}
+
+    public function MostrarLista2(){
+        $sql="SELECT iddelivery, idcliente, direccion, referencia, delivery, otro, fecPedido FROM pedirdelivery WHERE aceptado = 0 AND estado = 1;";
+        
+        if(!$res = $this->conn->query($sql)){
+            echo("Error description: " . $this->conn->error);
+            exit();
+        }
+
+        mysqli_close($this->conn);
+
+        return $res;
+    }
 	
 }
 

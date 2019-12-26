@@ -1,7 +1,13 @@
 <?php
-require_once "../Model/Listados.model.php";
-$listas = new Listas();
-$data = $listas->ServiciosAbiertosConductor('M11');
+session_start();
+if($_SESSION['conductor']){
+	
+
+	$codConductor = $_SESSION['conductor'];
+	
+	require_once "../Model/Listados.model.php";
+	$listas = new Listas();
+	$data = $listas->ServiciosAbiertosConductor($codConductor);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +25,7 @@ $data = $listas->ServiciosAbiertosConductor('M11');
 			<span>*</span>
 			<p class="subtitle">Lista de solicitudes pendientes</p>
 			<span>
-				<a href="menu.html">MENU</a>
+				<a href="menu.php">MENU</a>
 			</span>
 		</div>
 	</div>
@@ -40,3 +46,8 @@ $data = $listas->ServiciosAbiertosConductor('M11');
 	</table>
 </body>
 </html>
+<?php 
+}else{
+	header('Location: index.html');
+}
+ ?>

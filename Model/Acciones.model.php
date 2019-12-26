@@ -31,6 +31,25 @@ class Acciones
 
     }
 
+    public function AceptarDelivery($idpedir, $idauto)
+    {
+        
+        $sql ="UPDATE pedirdelivery SET idauto = '".$idauto."', aceptado = 1, fecAceptado = now()  WHERE iddelivery = $idpedir LIMIT 1;";
+
+        if(!$this->conn->query($sql)){
+            echo "Error al Aceptar solicitud";
+            $res = false;
+        }
+
+        echo "Petición Aceptada con exito";
+        $res = true;
+
+        mysqli_close($this->conn);
+
+        return $res;
+
+    }
+
     public function CerrarServicio($idpedir){
     	$sql = "UPDATE pedirmovilidad SET estado = 0, fecTermino = now() WHERE idpedir = $idpedir LIMIT 1;";
 

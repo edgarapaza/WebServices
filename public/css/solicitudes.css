@@ -10,6 +10,7 @@ body {
 .mimenu {
   background-color: #3CBAEC;
   border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
   padding: 5px;
   color: #333;
   text-decoration: none; }
@@ -17,8 +18,8 @@ body {
 .header {
   background-color: #081F3E;
   color: white;
-  font-size: 1em;
-  border-radius: 10px 10px 0px 0px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.2em;
   height: 60px;
   text-align: center; }
   .header .title {
@@ -60,7 +61,7 @@ body {
       color: #969BA0; }
     .content-pedidos .pedidos_detalles .boton-principal {
       display: flex;
-      background-color: #081F3E;
+      background-color: #3CBAEC;
       text-decoration: none;
       color: white;
       font-weight: bold;
