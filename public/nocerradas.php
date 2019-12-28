@@ -7,21 +7,24 @@ if($_SESSION['conductor']){
 	require_once "../Model/Listados.model.php";
 	$listas = new Listas();
 	$data = $listas->ServiciosAbiertosConductor($codConductor);
+
+	include "inc/header.php";
+
+	//<link rel="stylesheet" href="css/pendientes.css">
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/pendientes.css">
-	<title>No cerradas</title>
-</head>
-<body>
+	<div class="container">
+		<div class="row">
+	      <div class="col s12">This div is 12-columns wide on all screen sizes</div>
+	      <div class="col s6">6-columns (one-half)</div>
+	      <div class="col s6">6-columns (one-half)</div>
+	    </div>
+	</div>
+
 	<div class="header">
 		<H3>Menu Conductor</H3>
 		<div class="title">
-			<span>*</span>
+			<i class="material-icons">storage</i>
 			<p class="subtitle">Lista de solicitudes pendientes</p>
 			<span>
 				<a href="menu.php">MENU</a>
@@ -49,6 +52,8 @@ if($_SESSION['conductor']){
 </body>
 </html>
 <?php 
+	include "footer.php";
+
 }else{
 	header('Location: index.html');
 }
