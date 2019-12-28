@@ -1,3 +1,4 @@
-.phpintel/
 *.jpg
 *.png
+*.gif
+.phpintel/
