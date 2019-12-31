@@ -1,49 +1,98 @@
-<?php 
-require "../Model/Listados.model.php";
-$listas = new Listas();
-$data = $listas->ServiciosAbiertosTodos();
+<?php
+session_start();
+if($_SESSION['conductor']){
+	require "../Model/Listados.model.php";
+	$listas = new Listas();
+	$data = $listas->ServiciosAbiertosTodos();
 
-$num = $data->num_rows;
+	$num = $data->num_rows;
 
-
-
+	include "./inc/header.php";
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/menu.css">
-	<title>Menu</title>
-</head>
-<body>
-	<div class="header">
-		<H3>Menu Conductor</H3>
-		<div class="title">
-			<span>*</span>
-			<p class="subtitle">Lista de solicitudes pendientes</p>
-			<span>
-				<a href="menu.php">MENU</a>
-			</span>
+<div class="container">
+	<div class="row">
+		<div class="header">
+			<H3>Menu Conductor</H3>
+			<div class="title">
+				<span>*</span>
+				<p class="subtitle">Lista de solicitudes pendientes</p>
+				<span>
+					<a href="menu.php">MENU</a>
+				</span>
+			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<h1>Bienvenido</h1>
+		<div class="collection">
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $num; ?></span>Pedidos Delivery</a>
+			<a href="#!" class="collection-item"><span class="new badge"><?php echo $num; ?></span>Nuevas Solicitudes</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $num; ?></span>Reserva</a>
+			
+		</div>
+		Tenemos <span class="numero"></span> nuevas solicitudes de movilidad
+		<div class="row">
+				<div class="col s12 m6">
+					<div class="card blue-grey darken-1">
+						<div class="card-content white-text">
+							<span class="card-title">5 Pedidos de Taxi</span>
+							<p>Ver la lista completa</p>
+						</div>
+						<div class="card-action">
+							<a href="newSolicitudes.php">Ver Lista</a>
+							<a href="#">Cerrar</a>
+						</div>
+					</div>
+				</div>
+  				
+		</div>
+
+		<div class="row">
+				<div class="col s12 m6">
+					<div class="card teal darken-2">
+						<div class="card-content white-text">
+							<span class="card-title">11 Pedidos Delivery </span>
+							<p>Ver la lista completa</p>
+						</div>
+						<div class="card-action">
+							<a href="newSolicitudes.php">Ver Lista</a>
+							<a href="#">Cerrar</a>
+						</div>
+					</div>
+				</div>
+  				
+		</div>
+
+		<div class="row">
+				<div class="col s12 m6">
+					<div class="card pink darken-3">
+						<div class="card-content white-text">
+							<span class="card-title">2 Reservas de Vehiculos </span>
+							<p>Ver la lista completa</p>
+						</div>
+						<div class="card-action">
+							<a href="newSolicitudes.php">Ver Lista</a>
+							<a href="#">Cerrar</a>
+						</div>
+					</div>
+				</div>
+  				
+		</div>
+
+			<br/>
+			<a href="nocerradas.php" class="btn">Servicio en Curso</a>
+			<br/>
+			<a href="concluidos.php" class="btn">Servicios Concluidos</a>
+
+		</div>
+	</div>
+</div>
 	
-	<h1>Bienvenido</h1>
-	<em>Eliga algunas de las herramientas</em>
 
-	<div class="botones">
-		
-		<div class="nuevosMensajes">
-			Tenemos <span class="numero"><?php echo $num; ?></span> nuevas solicitudes de movilidad
-		</div>
-
-		<a href="newSolicitudes.php" class="boton-principal">Nuevas Solicitudes</a>
-		<br>
-		<a href="nocerradas.php" class="boton-principal">Servicio en Curso</a>
-		<br>
-		<a href="concluidos.php" class="boton-principal">Servicios Concluidos</a>
-
-	</div>
-
-</body>
-</html>
+<?php
+include "./inc/footer.php";
+}else{
+	header("Location: ../index.html");
+}
+?>
