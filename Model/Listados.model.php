@@ -20,8 +20,8 @@ class Listas
     		echo "Error mostrando servicios Abiertos";
     	}
 
-		mysqli_close($this->conn);
 		return $res;
+		mysqli_close($this->conn);
 	}
 
 	public function ServiciosAbiertosTodos()
@@ -32,8 +32,8 @@ class Listas
     		echo "Error mostrando servicios Abiertos";
     	}
 
-		mysqli_close($this->conn);
 		return $res;
+		mysqli_close($this->conn);
 	}
 
     public function SoloPedidos()
@@ -44,8 +44,8 @@ class Listas
             echo "Error mostrando servicios Abiertos";
         }
 
-        mysqli_close($this->conn);
         return $res;
+        mysqli_close($this->conn);
     }
     public function SoloDelivery()
     {
@@ -55,8 +55,8 @@ class Listas
             echo "Error mostrando servicios Abiertos";
         }
 
-        mysqli_close($this->conn);
         return $res;
+        mysqli_close($this->conn);
     }
     public function SoloReservas()
     {
@@ -66,8 +66,8 @@ class Listas
             echo "Error mostrando servicios Abiertos";
         }
 
-        mysqli_close($this->conn);
         return $res;
+        mysqli_close($this->conn);
     }
 
 	public function ServiciosConcluidos($idauto)
@@ -78,8 +78,8 @@ class Listas
     		echo "Error mostrando Servicios Concluidos";
     	}
 
-		mysqli_close($this->conn);
 		return $res;
+		mysqli_close($this->conn);
 	}
 
 }

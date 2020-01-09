@@ -3,9 +3,13 @@ session_start();
 if($_SESSION['conductor']){
 	require "../Model/Listados.model.php";
 	$listas = new Listas();
-	$data = $listas->ServiciosAbiertosTodos();
+	$data1 = $listas->SoloPedidos();
+	$data2 = $listas->SoloDelivery();
+	$data3 = $listas->SoloReservas();
 
-	$numTodos = $data->num_rows;
+	$numPedidos = $data1->num_rows;
+	$numDelivery = $data2->num_rows;
+	$numReserva = $data3->num_rows;
 
 
 	include "./inc/header.php";
@@ -86,12 +90,12 @@ if($_SESSION['conductor']){
 	</div>
 
 	<div class="row">
-		<div id="contenido">mi contenido</div>
+		<div id="contenido"></div>
 		
 		<div class="collection">
-			<a href="#!" class="collection-item"><span class="badge"><?php echo $numTodos; ?></span>Pedidos Delivery</a>
-			<a href="#!" class="collection-item"><span class="new badge"><?php echo $numTodos; ?></span>Nuevas Solicitudes</a>
-			<a href="#!" class="collection-item"><span class="badge"><?php echo $numTodos; ?></span>Reserva</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $numPedidos; ?></span>Pedidos Delivery</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $numDelivery; ?></span>Nuevas Solicitudes</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $numReserva; ?></span>Reserva</a>
 			
 		</div>
 		Tenemos <span class="numero"><?php echo $numTodos; ?></span> nuevas solicitudes de movilidad
@@ -99,7 +103,7 @@ if($_SESSION['conductor']){
 				<div class="col s12 m6">
 					<div class="card blue-grey darken-1">
 						<div class="card-content white-text">
-							<span class="card-title">5 Pedidos de Taxi</span>
+							<span class="card-title"><?php echo $numPedidos; ?> Pedidos de Taxi</span>
 							<p>Ver la lista completa</p>
 						</div>
 						<div class="card-action">
@@ -115,7 +119,7 @@ if($_SESSION['conductor']){
 				<div class="col s12 m6">
 					<div class="card teal darken-2">
 						<div class="card-content white-text">
-							<span class="card-title">11 Pedidos Delivery </span>
+							<span class="card-title"><?php echo $numDelivery; ?> Pedidos Delivery </span>
 							<p>Ver la lista completa</p>
 						</div>
 						<div class="card-action">
@@ -131,7 +135,7 @@ if($_SESSION['conductor']){
 				<div class="col s12 m6">
 					<div class="card pink darken-3">
 						<div class="card-content white-text">
-							<span class="card-title">2 Reservas de Vehiculos </span>
+							<span class="card-title"><?php echo $numReserva; ?> Reservas de Vehiculos </span>
 							<p>Ver la lista completa</p>
 						</div>
 						<div class="card-action">
