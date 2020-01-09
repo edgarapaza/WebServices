@@ -5,17 +5,79 @@ if($_SESSION['conductor']){
 	$listas = new Listas();
 	$data = $listas->ServiciosAbiertosTodos();
 
-	$num = $data->num_rows;
+	$numTodos = $data->num_rows;
+
 
 	include "./inc/header.php";
 ?>
+ <meta http-equiv="refresh" content="5">
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script language="javascript">
+	var timestamp = null;
+
+	function cargar_push(){
+		$.ajax({
+			type: 'POST',
+			url: '../Controller/httpush.php',
+			data: "&timestamp="+timestamp,
+			dataType: 'html',
+			success: function(data)
+			{
+				var json  =eval("("+ data +")");
+				fecha      = json.fecha;
+				direccion  = json.direccion;
+				referencia = json.referencia;
+				tipo       = json.tipo;
+				delivery   = json.delivery;
+				otro       = json.otro;
+				idcliente  = json.idcliente;
+				estado     = json.estado;
+
+				if(timestamp == null)
+				{
+
+				}else{
+					$.$.ajax({
+						type: 'POST',
+						url: '../Controller/mensajes.php',
+						data: "",
+						dataType: 'html',
+						success:  function(data){
+							$("#contenido").html(data);
+						}
+					})
+					
+				}
+				setTimeout('cargar_push()', 1000);
+			}
+		})
+
+		.done(function() {
+			console.log("success final");
+		})
+		.fail(function() {
+			console.log("error final");
+		})
+		.always(function() {
+			console.log("complete final");
+		});
+		
+	}
+
+	jQuery(document).ready(function($) {
+		cargar_push();
+	});
+	
+</script>
+-->
+
 <div class="container">
 	<div class="row">
 		<div class="header">
 			<H3>Menu Conductor</H3>
 			<div class="title">
-				<span>*</span>
-				<p class="subtitle">Lista de solicitudes pendientes</p>
 				<span>
 					<a href="menu.php">MENU</a>
 				</span>
@@ -24,14 +86,15 @@ if($_SESSION['conductor']){
 	</div>
 
 	<div class="row">
-		<h1>Bienvenido</h1>
+		<div id="contenido">mi contenido</div>
+		
 		<div class="collection">
-			<a href="#!" class="collection-item"><span class="badge"><?php echo $num; ?></span>Pedidos Delivery</a>
-			<a href="#!" class="collection-item"><span class="new badge"><?php echo $num; ?></span>Nuevas Solicitudes</a>
-			<a href="#!" class="collection-item"><span class="badge"><?php echo $num; ?></span>Reserva</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $numTodos; ?></span>Pedidos Delivery</a>
+			<a href="#!" class="collection-item"><span class="new badge"><?php echo $numTodos; ?></span>Nuevas Solicitudes</a>
+			<a href="#!" class="collection-item"><span class="badge"><?php echo $numTodos; ?></span>Reserva</a>
 			
 		</div>
-		Tenemos <span class="numero"></span> nuevas solicitudes de movilidad
+		Tenemos <span class="numero"><?php echo $numTodos; ?></span> nuevas solicitudes de movilidad
 		<div class="row">
 				<div class="col s12 m6">
 					<div class="card blue-grey darken-1">
@@ -56,7 +119,7 @@ if($_SESSION['conductor']){
 							<p>Ver la lista completa</p>
 						</div>
 						<div class="card-action">
-							<a href="newSolicitudes.php">Ver Lista</a>
+							<a href="newPedidos.php">Ver Lista</a>
 							<a href="#">Cerrar</a>
 						</div>
 					</div>
@@ -72,7 +135,7 @@ if($_SESSION['conductor']){
 							<p>Ver la lista completa</p>
 						</div>
 						<div class="card-action">
-							<a href="newSolicitudes.php">Ver Lista</a>
+							<a href="newReserva.php">Ver Lista</a>
 							<a href="#">Cerrar</a>
 						</div>
 					</div>

@@ -24,7 +24,7 @@ if(isset($_GET["idcliente"]) && isset($_GET["direccion"]) && isset($_GET["refere
 	echo $fecpedido ."<br>";
 	
 			
-	$sql = "INSERT INTO reservar VALUES (NULL,'$idcliente',0,'$direccion','$referencia','$horareserva','$otro','$fecpedido',1,NULL,0);";
+	$sql = "INSERT INTO reservar VALUES (null,'$idcliente',0,'$direccion','$referencia','$horareserva','$otro','$fecpedido',1,null,0,0,null);";
 			
 	if(!$link->query($sql))
 	{
@@ -39,6 +39,8 @@ if(isset($_GET["idcliente"]) && isset($_GET["direccion"]) && isset($_GET["refere
 		echo json_encode($json);
 
     }else{
+    	$sqlnotificaciones = "INSERT INTO notificaciones VALUES (NULL,'$idcliente','$direccion','$referencia','Res','$horareserva','$otro','$fecpedido',0);";
+    	$link->query($sqlnotificaciones);
 
     	$consulta  = "SELECT r.idreserva,r.idcliente,r.idauto,r.direccion,r.referencia,r.hora,r.otro,r.fecPedido FROM reservar as r WHERE r.estado = TRUE AND r.idcliente=".$idcliente;
     	

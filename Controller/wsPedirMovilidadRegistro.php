@@ -39,6 +39,8 @@ if(isset($_GET["idcliente"]) && isset($_GET["idauto"]) && isset($_GET["direccion
 		echo json_encode($json);
 
     }else{
+    	$sqlnotificaciones = "INSERT INTO notificaciones VALUES (NULL,'$idcliente','$direccion','$referencia','Mov','$tipounidad','$otro','$fecpedido',0);";
+    	$link->query($sqlnotificaciones);
 
     	$consulta  = "SELECT idpedir, idcliente, direccion, referencia, tipouni, fecPedido FROM pedirmovilidad WHERE estado = true AND idcliente =" . $idcliente;
     	

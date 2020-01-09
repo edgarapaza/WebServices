@@ -20,9 +20,9 @@ class ListaPendientes
             exit();
         }
 
-		mysqli_close($this->conn);
 
 		return $res;
+		mysqli_close($this->conn);
 	}
 
     public function MostrarLista2(){
@@ -33,9 +33,22 @@ class ListaPendientes
             exit();
         }
 
-        mysqli_close($this->conn);
 
         return $res;
+        mysqli_close($this->conn);
+    }
+
+    public function MostrarLista3(){
+        $sql="SELECT idreserva,idcliente,idauto,direccion,referencia,hora,otro,fecPedido,estado FROM reservar WHERE aceptado = 0 AND estado = 1                     ;";
+        
+        if(!$res = $this->conn->query($sql)){
+            echo("Error description: " . $this->conn->error);
+            exit();
+        }
+
+
+        return $res;
+        mysqli_close($this->conn);
     }
 	
 }

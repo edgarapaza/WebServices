@@ -7,9 +7,11 @@ if($_SESSION['conductor']){
 	require_once "../Model/ListaPendientes.model.php";
 
 	$pendientes = new ListaPendientes();
-	$datos  = $pendientes->MostrarLista();
 	
+	$datos = $pendientes->MostrarLista3();
+
 	include "./inc/header.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +26,7 @@ if($_SESSION['conductor']){
 	<div class="header">
 		<div class="title">
 		
-			<p class="subtitle">Lista de solicitudes pendientes</p>
+			<p class="subtitle">Lista de Delivery</p>
 			<span><?php echo $codConductor; ?></span>
 			<span>
 				<a href="menu.php" class="mimenu">MENU</a>
@@ -33,29 +35,27 @@ if($_SESSION['conductor']){
 	</div>
 
 	<?php 
-		while ($row = $datos->fetch_array()) {
+		while ($row = $datos->fetch_array(MYSQLI_ASSOC)) {
 	?>
 	<div class="content-pedidos">
 		<div class="pedido_imagen">
-			<div class="btn-floating btn-large waves-effect waves-light darken-2 blue">Mov</div>
+			<div class="btn-floating btn-large waves-effect waves-light purple">R</div>
 			<span class="etiqueta"><?php echo $row[1]; ?></span>
 		</div>
 		<div class="pedidos_detalles">
 			<span class="etiqueta">Direccion:</span>
-			<p><?php echo $row[3]; ?></p>
+			<p><?php echo $row['direccion']; ?></p>
+			<span class="etiqueta">Hora de Reserva:</span>
+			<p><?php echo $row['hora']; ?></p>
 			<span class="etiqueta">Referencia:</span>
-			<p><?php echo $row[4]; ?></p>
-			<span class="etiqueta">Tipo Unidad:</span>
-			<p><?php echo $row[5]; ?></p>
+			<p><?php echo $row['referencia']; ?></p>
 			<p>
-				<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo $codConductor;?>" class="darken-2 blue btn">Aceptar servicio</a>
+				<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo $codConductor;?>" class="btn purple">Aceptar servicio</a>
 			</p>
 		</div>
 	</div>
 
 	<?php } ?>
-	
-	
 	
 </body>
 </html>	
@@ -63,5 +63,5 @@ if($_SESSION['conductor']){
 }else{
 	header("../public/index.html");
 }
- ?>
+?>
 

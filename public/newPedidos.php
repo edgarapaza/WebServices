@@ -7,9 +7,10 @@ if($_SESSION['conductor']){
 	require_once "../Model/ListaPendientes.model.php";
 
 	$pendientes = new ListaPendientes();
-	$datos  = $pendientes->MostrarLista();
+	$datos  = $pendientes->MostrarLista2();
 	
 	include "./inc/header.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +20,7 @@ if($_SESSION['conductor']){
 	<title>Nuevas Solicitudes</title>
 	<link rel="stylesheet" href="css/solicitudes.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+
 </head>
 <body>
 	<div class="header">
@@ -37,7 +39,7 @@ if($_SESSION['conductor']){
 	?>
 	<div class="content-pedidos">
 		<div class="pedido_imagen">
-			<div class="btn-floating btn-large waves-effect waves-light darken-2 blue">Mov</div>
+			<div class="btn-floating btn-large waves-effect waves-light green">P</div>
 			<span class="etiqueta"><?php echo $row[1]; ?></span>
 		</div>
 		<div class="pedidos_detalles">
@@ -48,7 +50,7 @@ if($_SESSION['conductor']){
 			<span class="etiqueta">Tipo Unidad:</span>
 			<p><?php echo $row[5]; ?></p>
 			<p>
-				<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo $codConductor;?>" class="darken-2 blue btn">Aceptar servicio</a>
+				<a href="../Control/aceptar.control.php?idpedir=<?php echo $row[0]; ?>&idauto=<?php echo $codConductor;?>" class="green btn">Aceptar servicio</a>
 			</p>
 		</div>
 	</div>

@@ -25,8 +25,8 @@ if(isset($_GET["idcliente"]) && isset($_GET["direccion"]) && isset($_GET["refere
 	echo $fecpedido ."<br>";
 	
 			
-	$sql = "INSERT INTO pedirdelivery VALUES (NULL,'$idcliente',0,'$direccion','$referencia','$delivery','$otro','$fecpedido',1,null,0);";
-			
+	$sql = "INSERT INTO pedirdelivery VALUES (null,'$idcliente',0,'$direccion','$referencia','$delivery','$otro','$fecpedido',1,null,0,0,null);";
+
 	if(!$link->query($sql))
 	{
        	echo("Error description: " . $link->error);
@@ -40,6 +40,8 @@ if(isset($_GET["idcliente"]) && isset($_GET["direccion"]) && isset($_GET["refere
 		echo json_encode($json);
 
     }else{
+    	$sqlnotificaciones = "INSERT INTO notificaciones VALUES (NULL,'$idcliente','$direccion','$referencia','Del','$delivery','$otro','$fecpedido',0);";
+    	$link->query($sqlnotificaciones);
 
     	$consulta  = "SELECT idpedir, idcliente, direccion, referencia, tipouni, fecPedido FROM pedirmovilidad WHERE estado = true AND idcliente =" . $idcliente;
     	
